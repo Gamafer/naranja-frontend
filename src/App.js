@@ -12,12 +12,23 @@ import NotFoundPage from './Components/NotFoundPage/NotFoundPage';
 import PrivateRoute from './Components/PrivateRoute';
 import HomeRoute from './Components/HomeRoute';
 import Footer from './Components/Footer';
+const express = require('express');
+const app = express();
 
 
 
 function App() {
+  const port = process.env.PORT || 3000;
+
+// Define your routes and middleware here
+
+// Listen on `port` and 0.0.0.0
+app.listen(port, "0.0.0.0", function () {
+  console.log(`Server running on port ${port}`);
+});
 
   return (
+    
     <>
     <div id='general__container'>
     <BrowserRouter>
@@ -37,6 +48,7 @@ function App() {
   </div>
   <Footer/>
   </>
+  
   );
 }
 
