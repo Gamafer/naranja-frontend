@@ -12,20 +12,47 @@ import NotFoundPage from './Components/NotFoundPage/NotFoundPage';
 import PrivateRoute from './Components/PrivateRoute';
 import HomeRoute from './Components/HomeRoute';
 import Footer from './Components/Footer';
+import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 const express = require('express');
 const app = express();
 
 
 
 function App() {
-  const port = process.env.PORT || 3000;
+  const [apiMessage, setApiMessage] = useState("No ha cargado");
+  
+
+  useEffect(() =>{
+    const getApiInfo = async () => {
+      const response = await fetch(
+        `&{process.env.REACT_APP_API_BASE_URL}/test`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+        }
+      );
+
+      const parsedResponse = await response.json();
+      setApiMessage(parsedResponse.message);
+    };
+    getApiInfo();  
+  }, [])
+
+  return (
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>La respuesta de la API es:</p>
+        <p>{apiMessage}</p>
+      </header>
+    </div>
+  )
 
 // Define your routes and middleware here
-
-// Listen on `port` and 0.0.0.0
-app.listen(port, "0.0.0.0", function () {
-  console.log(`Server running on port ${port}`);
-});
 
   return (
     
