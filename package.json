@@ -1,7 +1,7 @@
 {
   "name": "frontend",
   "version": "0.1.0",
-  "main": ".src/App.js",
+  "main": "./src/App.js",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.4.0",
@@ -46,8 +46,8 @@
     "build": "react-scripts build",
     "jest": "react-scripts test",
     "eject": "react-scripts eject",
-    "dev": "nodemon .src/App.js",
-    "prod": "node .src/App.js"
+    "dev": "nodemon App.js",
+    "prod": "node App.js"
   },
   "eslintConfig": {
     "extends": [
